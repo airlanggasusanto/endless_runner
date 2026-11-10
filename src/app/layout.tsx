@@ -14,16 +14,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Endless Runner 2D",
-  description: "A custom 3D endless runner game",
+  description: "a 2D car endless runner game",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      {/* Added fixed, inset-0, and overflow-hidden here */}
+      <body className="fixed inset-0 flex flex-col overflow-hidden overscroll-none touch-none">
+        {children}
+      </body>
     </html>
   );
 }

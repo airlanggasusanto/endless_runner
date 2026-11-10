@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   output: "export",
   
-  // If your GitHub repository is named "endless_runner" (not your-username.github.io), 
-  // uncomment the next line and replace with your exact repo name:
-  basePath: "/endless_runner",
+  basePath: isProduction ? "/endless_runner" : "",
+
+  allowedDevOrigins: ["192.168.1.4"],
 
   images: {
     unoptimized: true, // Required for next/image to work with static exports
